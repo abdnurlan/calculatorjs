@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Iceberg&display=swap" rel="stylesheet">
+    <style>
+        #calc{
+            display: inline-block;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #333;
+            background-color: #EEE;
+        }
+        button{
+            width: 50px;
+            padding: 10px;
+            margin: 5px;
+            font: 1.6em arial;
+            border-radius: 3px;
+            border: 1px solid #333;
+            box-shadow: 3px 3px 0 #333;
+
+        }
+        button:active{
+            box-shadow:0 0 3px #333 ;
+        }
+        #eq:active{
+            box-shadow:0 0 3px #333 ;
+        }
+        body{
+            text-align: center;
+        }
+        #display{
+            margin: 5px;
+            width:225px;
+            padding: 10px;
+            font: 1.5em Iceberg;
+            border-radius: 5px;
+            border: 1px solid #333;
+            box-shadow: inset 2px 2px 1px #666;
+            text-align: right;
+        }
+        #eq{
+            width: 115px;
+            background-color: orange;
+            box-shadow: 3px 3px 0 #333;
+        }
+        #c{
+            width: 115px;
+            background-color: orange;
+            box-shadow: 3px 3px 0 #333;
+        }
+    </style>
+</head>
+<body>
+    <div id="calc">
+        <div>
+            <input id="display" type="text" />
+        </div>
+        <div>
+            <button id="c" onclick="clean()">C</button>
+            <button onclick="back()">🡄</button>
+            <button onclick="press('/')">÷</button>
+        </div>
+        <div>
+            <button onclick="press('7')">7</button>
+            <button onclick="press('8')">8</button>
+            <button onclick="press('9')">9</button>
+            <button onclick="press('*')">×</button>
+        </div>
+        <div>
+            <button onclick="press('4')">4</button>
+            <button onclick="press('5')">5</button>
+            <button onclick="press('6')">6</button>
+            <button onclick="press('-')">-</button>
+        </div>
+        <div>
+            <button onclick="press('1')">1</button>
+            <button onclick="press('2')">2</button>
+            <button onclick="press('3')">3</button>
+            <button onclick="press('+')">+</button>
+        </div>
+        <div>
+            <button onclick="press('.')">.</button>
+            <button onclick="press('0')">0</button>
+            <button id="eq" onclick="calculate()">=</button>
+        </div>
+    </div>
+    <script>
+        const display = document.getElementById("display")
+        
+        
+        function press(x){
+            display.value += x
+        }
+        function back(){
+            display.value = display.value.slice(0,- 1)
+        }
+        function calculate(){
+           display.value = eval(display.value)
+        }
+        function clean(){
+            display.value = ""
+        }
+    </script>
+</body>
+</html>
